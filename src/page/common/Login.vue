@@ -34,6 +34,7 @@
 </template>
 
 <script>
+  import http from '../../request/http.js'
   export default {
     data(){
       return {
@@ -41,12 +42,12 @@
         pwdType: 'password',
         eyeType: 'fa fa-eye-slash fa-lg',
         ruleForm2: {
-          username: 'admin',
-          password: '123456',
+          username: '',
+          password: '',
         },
         rules2: {
           username: [{required: true, message: 'please enter your account', trigger: 'blur'}],
-          password: [{required: true, message: 'enter your password', trigger: 'blur'}]
+          password: [{required: true, message: 'please enter your password', trigger: 'blur'}]
         },
         checked: false
       }
@@ -56,11 +57,18 @@
         this.$refs.ruleForm2.validate((valid) => {
           if(valid){
             this.logining = true;
-            if(this.ruleForm2.username === 'admin' &&
-              this.ruleForm2.password === '123456'){
+            if(this.ruleForm2.username != '' &&
+              this.ruleForm2.password != ''){
               this.logining = false;
-              sessionStorage.setItem('user', this.ruleForm2.username);
-              this.$router.push({path: '/'});
+              let params = {
+                'username' : this.ruleForm2.username,
+                'password' : this.ruleForm2.password
+              }
+              http.fetchPost('/sys/user/login',params).then((data)=>{
+                console.log(data)
+              }).catch(err=>{
+                console.log(err)
+              })
             }else{
               this.logining = false;
               this.$alert('username or password wrong!', 'info', {

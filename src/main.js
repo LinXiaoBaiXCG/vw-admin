@@ -3,11 +3,19 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueCookie from 'vue-cookie'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/styles/index.scss'
 import 'font-awesome/scss/font-awesome.scss'
-Vue.use(ElementUI)
+import http from './request/http'
+Vue.use(ElementUI);
+Vue.use(VueCookie);
+Vue.use(http);
+import axios from 'axios';
+Vue.prototype.$axios = axios;
+import QS from 'qs'
+Vue.prototype.qs = QS;
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
@@ -28,4 +36,5 @@ router.beforeEach((to, from, next) => {
   }else{
     next();
   }
-})
+});
+
