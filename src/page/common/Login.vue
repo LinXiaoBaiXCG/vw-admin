@@ -34,7 +34,6 @@
 </template>
 
 <script>
-  import http from '../../request/http.js'
   export default {
     data(){
       return {
@@ -64,8 +63,11 @@
                 'username' : this.ruleForm2.username,
                 'password' : this.ruleForm2.password
               }
-              http.fetchPost('/sys/user/login',params).then((data)=>{
-                console.log(data)
+              this.http.Post('/sys/user/login',params).then((data)=>{
+                if (data.code === 0){
+                  this.$cookie.set("Authorization",data.data)
+                  this.$router.replace({name:'Container'})
+                }
               }).catch(err=>{
                 console.log(err)
               })

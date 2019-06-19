@@ -30,7 +30,7 @@ export default new Router({
               ] },
           ]
         },
-        {path: 'article', name: '文章', component: Article, },
+        {path: '/article', name: '文章', component: Article, },
       ]
     },
   ]

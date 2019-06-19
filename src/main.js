@@ -4,18 +4,15 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueCookie from 'vue-cookie'
+Vue.use(VueCookie);
 import ElementUI from 'element-ui'
+Vue.use(ElementUI);
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/styles/index.scss'
 import 'font-awesome/scss/font-awesome.scss'
 import http from './request/http'
-Vue.use(ElementUI);
-Vue.use(VueCookie);
-Vue.use(http);
-import axios from 'axios';
-Vue.prototype.$axios = axios;
-import QS from 'qs'
-Vue.prototype.qs = QS;
+Vue.prototype.http = http
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
