@@ -3,6 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueRouter from 'vue-router'
+Vue.use(VueRouter);
 import VueCookie from 'vue-cookie'
 Vue.use(VueCookie);
 import ElementUI from 'element-ui'
@@ -23,9 +25,9 @@ new Vue({
 })
 router.beforeEach((to, from, next) => {
   if(to.path === '/login'){
-    sessionStorage.removeItem('user');
+    localStorage.removeItem('username');
   }
-  var user = sessionStorage.getItem('user');
+  var user = localStorage.getItem('username');
   if(!user && to.path !== '/login'){
     next({
       path: '/login'

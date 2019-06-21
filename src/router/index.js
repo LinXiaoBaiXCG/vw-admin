@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/page/common/Login'
-import Container from '@/container/Container'
-import Dashboard from '@/page/dashboard'
-import Article from '@/page/article'
+import Login from '../page/common/Login'
+import Container from '../container/Container'
+import Dashboard from '../page/dashboard'
+import Article from '../page/article'
 
 Vue.use(Router)
 

@@ -71,7 +71,7 @@
       logout: function () {
         this.$confirm('确认退出?', '提示', {})
           .then(() => {
-            sessionStorage.removeItem('user');
+            localStorage.removeItem('username');
             this.$router.push('/login');
           })
           .catch(() => { });
@@ -87,7 +87,7 @@
       },
     },
     mounted: function () {
-      let user = sessionStorage.getItem('user');
+      let user = localStorage.getItem('username');
       if (user) {
         this.username = user;
       }
