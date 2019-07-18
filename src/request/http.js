@@ -13,7 +13,7 @@ axios.interceptors.request.use((config) => {
   }
   return config;
 },(error) =>{
-  console.log('传参有误，请检查后重试')
+  console.log('传参有误，请检查后重试！')
   return Promise.reject(error);
 });
 
